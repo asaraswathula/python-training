@@ -16,8 +16,12 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-  # +++your code here+++
-  return
+    if len(s) < 3:
+        return s
+    elif s[len(s)-3:len(s)] == 'ing':
+        return s + 'ly'
+    else:
+        return s + 'ing'
 
 
 # E. not_bad
@@ -48,33 +52,32 @@ def front_back(a, b):
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
-  if got == expected:
-    prefix = ' OK '
-  else:
-    prefix = '  X '
-  print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
+    if got == expected:
+        prefix = ' OK '
+    else:
+        prefix = '  X '
+    
+    print('{} got: {} expected: {}'.format(prefix, repr(got), repr(expected)))
 
 
 # main() calls the above functions with interesting inputs,
 # using the above test() to check if the result is correct or not.
 def main():
-  print 'verbing'
-  test(verbing('hail'), 'hailing')
-  test(verbing('swiming'), 'swimingly')
-  test(verbing('do'), 'do')
-
-  print
-  print 'not_bad'
-  test(not_bad('This movie is not so bad'), 'This movie is good')
-  test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
-  test(not_bad('This tea is not hot'), 'This tea is not hot')
-  test(not_bad("It's bad yet not"), "It's bad yet not")
-
-  print
-  print 'front_back'
-  test(front_back('abcd', 'xy'), 'abxcdy')
-  test(front_back('abcde', 'xyz'), 'abcxydez')
-  test(front_back('Kitten', 'Donut'), 'KitDontenut')
+    print('verbing')
+    test(verbing('hail'), 'hailing')
+    test(verbing('swiming'), 'swimingly')
+    test(verbing('do'), 'do')
+    
+    print('not_bad')
+    test(not_bad('This movie is not so bad'), 'This movie is good')
+    test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
+    test(not_bad('This tea is not hot'), 'This tea is not hot')
+    test(not_bad("It's bad yet not"), "It's bad yet not")
+    
+    print('front_back')
+    test(front_back('abcd', 'xy'), 'abxcdy')
+    test(front_back('abcde', 'xyz'), 'abcxydez')
+    test(front_back('Kitten', 'Donut'), 'KitDontenut')
 
 if __name__ == '__main__':
   main()

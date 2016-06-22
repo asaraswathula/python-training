@@ -46,18 +46,26 @@ import sys
 # Then print_words() and print_top() can just call the utility function.
 
 def read_file(filename):
+    libr = {}
+
     f = open(filename, 'rU')
+    f
     for line in f:
-        print(line)
+        for word in line.split():
+            if word.lower() in libr: libr[word.lower()] += 1
+            else: libr[word.lower()] = 1
     f.close()
-    return filename
-
-read_file('small.txt')
-
-sys.exit(0)
+    return libr
 
 def print_words(filename):
-    return
+    libr = read_file(filename)
+
+    for wrd in sorted(libr):
+        print("{} {}".format(wrd, libr[wrd]))
+
+print_words('alice.txt')
+
+sys.exit(0)
 
 def print_top(filename):
     return
